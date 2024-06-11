@@ -28,29 +28,22 @@ app.get("/users", (req, res) => {
     });
 })
 
-app.post("/users", (req, res) => {
-    const insert = 'INSERT INTO users(email, password, role, is_deleted) VALUES($1,$2,$3,$4)';
-    const values_users = ['vincentverlaan33@gmail.com', '1234', 0, false];
-    database_postgres.query(insert, values_users, (err, result) => {
-        if (err){
-            console.error('Error inserting data', err);
-        }
-        else{
-            console.log("Data inserted");
-            res.send(result.rows);
-        }
-    })
-})
+// app.post("/users", (req, res) => {
+//     const insert = 'INSERT INTO users(email, password, role, is_deleted) VALUES($1,$2,$3,$4)';
+//     const values_users = ['vincentverlaan33@gmail.com', '1234', 0, false];
+//     database_postgres.query(insert, values_users, (err, result) => {
+//         if (err){
+//             console.error('Error inserting data', err);
+//         }
+//         else{
+//             console.log("Data inserted");
+//             res.send(result.rows);
+//         }
+//     })
+// })
 
-app.post("/userTest", (req, res)=>{
+app.post("/users", (req, res)=>{
     console.log(req.body)
-    res.send("Aladeen")
-    // var newUser = {
-    //     email : req.body.email,
-    //     password : req.body.password,
-    //     role : req.body.role,
-    //     is_delete : req.body.is_deleted
-    // };
     const insert_test = 'INSERT INTO users(email, password, role, is_deleted) VALUES($1,$2,$3,$4)';
     const values_test = [req.body.email, req.body.password, req.body.role, req.body.is_deleted];
     
@@ -60,6 +53,7 @@ app.post("/userTest", (req, res)=>{
         }
         else {
             console.log("Great success !");
+            res.send("Inserted User")
         }
         
     })

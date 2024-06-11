@@ -8,3 +8,4 @@ app.get("/", (req,res)=>{
 app.listen(4545, ()=>{
     console.log("Up and running orders");
 })
+//liste de produits dans mongo
